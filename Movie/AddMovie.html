@@ -1,0 +1,70 @@
+﻿<h3>
+    {{ title }}
+</h3>
+<hr />
+<form name="movieForm" role="form" >
+    <strong class="error">{{ error }}</strong>
+    <div class="form-group">
+        <label for="MovieName">
+            Movie Name
+        </label>
+        <input type="text" class="form-control" name="MovieName" ng-model="MovieName" required autofocus />
+        <div ng-show="movieForm.$submitted || movieForm.MovieName.$touched" class="text-danger">
+            <div ng-show="movieForm.MovieName.$error.required">Tell us movie name.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ReleaseYear">
+            Release Year:
+        </label>
+        <input type="text" class="form-control" name="ReleaseYear" ng-model="ReleaseYear" required autofocus />
+        <div ng-show="movieForm.$submitted || movieForm.ReleaseYear.$touched" class="text-danger">
+            <div ng-show="movieForm.ReleaseYear.$error.required">Tell us movie release year.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">
+            Producer:
+        </label>
+        <select class="form-control" name="ProducerId" ng-model="ProducerId" ng-options="c.ProducerId as c.Name for c in producers" required autofocus>
+            <option value="">-- Select Producer --</option>
+        </select>
+        <a href="#!AddProducer" class="glyphicon glyphicon-plus btn btn-primary"></a>
+        <div ng-show="movieForm.$submitted || movieForm.ProducerId.$touched" class="text-danger">
+            <div ng-show="movieForm.ProducerId.$error.required">Tell us movie producer name.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">
+            Actors:
+        </label>
+        <select class="form-control" name="ActorId" ng-model="ActorId" multiple ng-options="c.ActorId as c.Name for c in actors" required autofocus>
+            <option value="">-- Select Actors --</option>
+        </select>
+        <div ng-show="movieForm.$submitted || movieForm.ActorId.$touched" class="text-danger">
+            <div ng-show="movieForm.ActorId.$error.required">Tell us movie actors name.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Plot">
+            Plot:
+        </label>
+        <input type="text" class="form-control" name="Plot" ng-model="Plot" required autofocus>
+        <div ng-show="movieForm.$submitted || movieForm.Plot.$touched" class="text-danger">
+            <div ng-show="movieForm.Plot.$error.required">Tell us movie plot.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Poster">
+            Poster:
+        </label>
+       
+            <input type="file" name="Poster" file-model="Poster" class="form-control"  upload>
+        <!--<input type="text" class="form-control" name="Poster" ng-model="Poster" required autofocus>-->
+        <div ng-show="movieForm.$submitted || movieForm.Poster.$touched" class="text-danger">
+            <div ng-show="movieForm.Poster.$error.required">Please select movie poster.</div>
+        </div>
+    </div>
+    <a href="#!List" class="btn btn-info">Back to List</a>
+    <button type="submit" class="btn btn-default" ng-click="save()" ng-disabled="movieForm.$invalid">Submit</button>
+</form>

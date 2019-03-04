@@ -1,0 +1,53 @@
+﻿<h3>
+    {{ title }}
+</h3>
+<hr />
+<form novalidate  name="Producer" role="form" style="max-width: 500px;">
+    <strong class="text-danger">{{ error }}</strong>
+    <div class="form-group">
+        <label for="Name">
+            Name
+        </label>
+        <input type="text" class="form-control" name="uName" ng-model="Name" required />
+        <div ng-show="Producer.$submitted || Producer.uName.$touched" class="text-danger">
+            <div ng-show="Producer.uName.$error.required">Tell us producer name.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">
+            Sex:
+        </label>
+        <select class="form-control" id="Sex" name="uSex" ng-model="Sex" required >
+            <option value="">-- Select Gender --</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="T">Trans Gender</option>
+        </select>
+        <div ng-show="Producer.$submitted || Producer.uSex.$touched" class="text-danger">
+            <div ng-show="Producer.uSex.$error.required">Tell us producer gender.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="DOB">
+            DOB:
+        </label>
+        <input type="text" class="form-control" name="uDOB" ng-model="DOB" ng-model-options="{ updateOn: 'blur' }"
+       placeholder="Select Date Of Birth" moment-picker="ctrl.input" format="DD-MM-YYYY" required >
+        <div ng-show="Producer.$submitted || Producer.uDOB.$touched" class="text-danger">
+            <div ng-show="Producer.uDOB.$error.required">Tell us producer date of birth.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Poster">
+            Bio:
+        </label>
+        <textarea type="text" class="form-control" name="uBio" ng-model="Bio" required ></textarea>
+        <div ng-show="Producer.$submitted || Producer.uBio.$touched" class="text-danger">
+            <div ng-show="Producer.uBio.$error.required">Tell us producer Bio Details.</div>
+        </div>
+    </div>
+    <a href="#!ProducerList" class="btn btn-info">Back to List</a>
+    <button type="button" class="btn btn-default" ng-click="save()" ng-disabled="Producer.$invalid">
+        Submit
+    </button>
+</form>

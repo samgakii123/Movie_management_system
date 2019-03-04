@@ -1,0 +1,53 @@
+﻿<h3>
+    {{ title }}
+</h3>
+<hr />
+<form name="actorForm" role="form" style="max-width: 500px;">
+    <strong class="text-danger">{{ error }}</strong>
+    <div class="form-group">
+        <label for="Name">
+            Name
+        </label>
+        <input type="text" class="form-control"  name="uName" ng-model="Name" required />
+        <div ng-show="actorForm.$submitted || actorForm.uName.$touched" class="text-danger">
+            <div ng-show="actorForm.uName.$error.required">Tell us Actor name.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">
+            Sex:
+        </label>
+        <select class="form-control" name="Sex" ng-model="Sex" required >
+            <option value="">-- Select Gender --</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="T">Trans Gender</option>
+        </select>
+        <div ng-show="actorForm.$submitted || actorForm.Sex.$touched" class="text-danger">
+            <div ng-show="actorForm.Sex.$error.required">Tell us Actor gender.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="DOB">
+            DOB:
+        </label>
+        <input type="text" class="form-control" name="DOB" ng-model="DOB" ng-model-options="{ updateOn: 'blur' }"
+       placeholder="Select Date Of Birth" moment-picker="ctrl.input" format="DD-MM-YYYY" required >
+        <div ng-show="actorForm.$submitted || actorForm.DOB.$touched" class="text-danger">
+            <div ng-show="actorForm.DOB.$error.required">Tell us Actor date of birth.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Poster">
+            Bio:
+        </label>
+        <textarea type="text" class="form-control" name="Bio" ng-model="Bio" required></textarea>
+        <div ng-show="actorForm.$submitted || actorForm.Bio.$touched" class="text-danger">
+            <div ng-show="actorForm.Bio.$error.required">Tell us Actor Bio details.</div>
+        </div>
+    </div>
+    <a href="#!actorlist" class="btn btn-info">Back to List</a>
+    <button type="submit" class="btn btn-default" ng-disabled="actorForm.$invalid" ng-click="save()">
+        Submit
+    </button>
+</form>
